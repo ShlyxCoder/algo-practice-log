@@ -3,6 +3,7 @@ package cn.org.shelly.leetcode.common.medium;
 import java.util.PriorityQueue;
 /**
  * ✔ 运动员和训练师的最大匹配数
+ * 优先队列
  * @author shelly
  * @date 2025/7/13
  */

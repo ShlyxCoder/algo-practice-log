@@ -7,19 +7,18 @@ package cn.org.shelly.leetcode.hot100.easy;
 public class Problem_283 {
     class Solution {
         public void moveZeroes(int[] nums) {
-            int i = 0;
-            int j = nums.length-1;
-            while(i<j){
-                while(nums[j] != 0) j--;
-                int a = nums[i];
-                if(a!=0){
-                    i++;
-                    continue;
+            int zero = 0;
+            int idx = 0;
+            for(int i = 0;i< nums.length;i++){
+                if(nums[i] == 0){
+                    zero++;
                 }
-                int c = nums[j];
-                nums[j] = a;
-                nums[i] = c;
-                j--;
+                else{
+                    nums[idx++] = nums[i];
+                }
+            }
+            for(int i = nums.length-1;zero >0 && i>=0 ;zero--,i--){
+                nums[i] =0;
             }
         }
     }

@@ -1,6 +1,7 @@
 package cn.org.shelly.leetcode.hot100.easy;
 /**
  * ✔ 两数之和
+ * 遍历
  * @author shelly
  * @date 2025/7/13
  */

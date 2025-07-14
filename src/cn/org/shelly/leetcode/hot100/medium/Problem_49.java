@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * ✔ 字母异位词分组
+ * 哈希表
  * @author shelly
  * @date 2025/7/13
  */
