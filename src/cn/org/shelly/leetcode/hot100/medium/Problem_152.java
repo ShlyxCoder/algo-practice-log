@@ -1,24 +1,24 @@
 package cn.org.shelly.leetcode.hot100.medium;
-
-import java.util.Arrays;
-
+/**
+ * ？ 乘积最大子数组
+ * @author shelly
+ * @date 2025/7/23
+ */
 public class Problem_152 {
     class Solution {
         public int maxProduct(int[] nums) {
-            int[] dp = new int[nums.length];
-            int [] mdp = new int[nums.length];
-            Arrays.fill(dp,Integer.MIN_VALUE);
-            Arrays.fill(mdp,Integer.MAX_VALUE);
-            dp[0] = nums[0];
-            for(int i = 1;i< nums.length;i++){
-                dp[i] = Math.max(dp[i-1] * nums[i],nums[i]);
-
-            }
-            int max = Integer.MIN_VALUE;
-            for(int i = 0;i<dp.length;i++){
-                max = Math.max(dp[i],max);
+            int max = nums[0];
+            int curMax = nums[0];
+            int curMin = nums[0];
+            for (int i = 1; i < nums.length; i++) {
+                int num = nums[i];
+                int tempMax = curMax;
+                curMax = Math.max(num, Math.max(num * curMax, num * curMin));
+                curMin = Math.min(num, Math.min(num * tempMax, num * curMin));
+                max = Math.max(max, curMax);
             }
             return max;
         }
+
     }
 }
