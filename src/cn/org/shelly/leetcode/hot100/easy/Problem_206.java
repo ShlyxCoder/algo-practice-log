@@ -21,7 +21,6 @@ public class Problem_206 {
             ListNode cur = head;
             cur.next = null;
             while(p != null){
-
                 ListNode tmp = p.next;
                 p.next = cur;
                 cur = p;
