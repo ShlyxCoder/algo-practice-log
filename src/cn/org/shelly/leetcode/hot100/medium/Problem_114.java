@@ -1,5 +1,9 @@
 package cn.org.shelly.leetcode.hot100.medium;
-
+/**
+ * ？ 二叉树展开为链表
+ * @author shelly
+ * @date 2025/7/29
+ */
 public class Problem_114 {
     class Solution {
 
@@ -16,16 +20,42 @@ public class Problem_114 {
               }
           }
         public void flatten(TreeNode root) {
-             dfs(root);
+            if(root == null) return;
+            dfs(root);
         }
-        TreeNode dfs(TreeNode node){
-              if(node == null) return null;
-           TreeNode left = node.left;
-           node.left = null;
-           TreeNode right = node.right;
-           node.right = dfs(left);
-           return node;
+        void dfs(TreeNode node){
+            if(node == null) return;
+            TreeNode left = node.left;
+            TreeNode right = node.right;
+            dfs(left);
+            dfs(right);
+            if(left != null){
+                node.right = left;
+                TreeNode p = left;
+                while(p.right != null) p = p.right;
+                p.right = right;
+            }
+            node.left = null;
+        }
+        void morris(TreeNode root) {
+            TreeNode curr = root;
+            while (curr != null) {
+                if (curr.left != null) {
+                    // 找左子树的最右节点
+                    TreeNode prev = curr.left;
+                    while (prev.right != null) {
+                        prev = prev.right;
+                    }
+                    // 将当前节点的右子树接到左子树的最右节点上
+                    prev.right = curr.right;
+
+                    // 将左子树接到右边，左置空
+                    curr.right = curr.left;
+                    curr.left = null;
+                }
+                // 继续访问右子树
+                curr = curr.right;
+            }
         }
 
-    }
-}
+    }}
