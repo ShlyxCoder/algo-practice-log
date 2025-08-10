@@ -1,27 +1,31 @@
 package cn.org.shelly.leetcode.common.medium;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
+import java.util.HashMap;
+import java.util.Map;
+/**
+ * ✔ 水果成篮
+ * @author shelly
+ * @date 2025/8/10
+ */
 public class Problem_904 {
     class Solution {
         public int totalFruit(int[] fruits) {
-            if(fruits.length < 2) return 2;
-            int max = -1;
-            int l = 0, r = 0;
-            Set<Integer> set = new LinkedHashSet<>();
-            while (r < fruits.length) {
-                if(set.contains(fruits[r]) || set.size() < 2) set.add(r);
-                else{
-                    int tmp = set.iterator().next();
-                    set.remove(set.iterator().next());
-                    l = tmp;
-                    set.add(r);
+            int n = fruits.length;
+            Map<Integer, Integer> cnt = new HashMap<>();
+
+            int left = 0, ans = 0;
+            for (int right = 0; right < n; ++right) {
+                cnt.put(fruits[right], cnt.getOrDefault(fruits[right], 0) + 1);
+                while (cnt.size() > 2) {
+                    cnt.put(fruits[left], cnt.get(fruits[left]) - 1);
+                    if (cnt.get(fruits[left]) == 0) {
+                        cnt.remove(fruits[left]);
+                    }
+                    ++left;
                 }
-                r++;
-                max = Math.max(max, r - l);
+                ans = Math.max(ans, right - left + 1);
             }
-            return max;
+            return ans;
         }
     }
 }
