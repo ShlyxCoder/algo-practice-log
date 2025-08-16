@@ -20,7 +20,6 @@ public class Problem_169 {
 
         public int majorityElement(int[] nums) {
             Random rand = new Random();
-
             int majorityCount = nums.length / 2;
 
             while (true) {
