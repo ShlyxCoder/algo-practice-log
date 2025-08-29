@@ -3,8 +3,6 @@ package cn.org.shelly.leetcode.other;
 import java.util.Scanner;
 
 public class xhs2023215 {
-
-    class Main {
         public static void main(String[] args){
             Scanner sc = new Scanner(System.in);
             int n = sc.nextInt();
@@ -33,6 +31,4 @@ public class xhs2023215 {
 
             System.out.println(dp[T][H]);
         }
-    }
-
 }
