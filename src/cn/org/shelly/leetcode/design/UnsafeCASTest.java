@@ -17,7 +17,7 @@ class MyAtomic{
 
     private volatile int value;
     static {
-        Field f = null;
+        Field f;
         try {
             f = Unsafe.class.getDeclaredField("theUnsafe");
             f.setAccessible(true);
