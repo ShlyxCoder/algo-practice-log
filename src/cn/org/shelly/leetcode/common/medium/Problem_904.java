@@ -10,22 +10,27 @@ import java.util.Map;
 public class Problem_904 {
     class Solution {
         public int totalFruit(int[] fruits) {
-            int n = fruits.length;
-            Map<Integer, Integer> cnt = new HashMap<>();
+            int l = 0, r = 0;
+            Map<Integer, Integer> m = new HashMap<>();
+            int ret = 0, size = 0;
 
-            int left = 0, ans = 0;
-            for (int right = 0; right < n; ++right) {
-                cnt.put(fruits[right], cnt.getOrDefault(fruits[right], 0) + 1);
-                while (cnt.size() > 2) {
-                    cnt.put(fruits[left], cnt.get(fruits[left]) - 1);
-                    if (cnt.get(fruits[left]) == 0) {
-                        cnt.remove(fruits[left]);
+            while (r < fruits.length) {
+                int cur = fruits[r];
+                m.put(cur, m.getOrDefault(cur, 0) + 1);
+                size++;
+                while (m.size() > 2) {
+                    int leftFruit = fruits[l];
+                    m.put(leftFruit, m.get(leftFruit) - 1);
+                    if (m.get(leftFruit) == 0) {
+                        m.remove(leftFruit);
                     }
-                    ++left;
+                    size--;
+                    l++;
                 }
-                ans = Math.max(ans, right - left + 1);
+                ret = Math.max(ret, size);
+                r++;
             }
-            return ans;
+            return ret;
         }
     }
 }
