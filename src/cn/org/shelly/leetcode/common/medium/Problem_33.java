@@ -11,7 +11,6 @@ public class Problem_33 {
             while (left <= right) {
                 int mid = (left + right) >> 1;
                 if (nums[mid] == target) return mid;
-
                 // 左半部分有序
                 if (nums[left] <= nums[mid]) {
                     if (nums[left] <= target && target < nums[mid]) {
