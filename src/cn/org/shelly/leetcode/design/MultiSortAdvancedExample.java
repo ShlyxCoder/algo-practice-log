@@ -1,7 +1,6 @@
 package cn.org.shelly.leetcode.design;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MultiSortAdvancedExample {
 
@@ -32,7 +31,6 @@ public class MultiSortAdvancedExample {
         @Override
         public int compareTo(Person o) {
             // 多种比较方法展示：
-            
             // 1️⃣ 不安全：直接减法（可能溢出）
             // return this.age - o.age;
 
