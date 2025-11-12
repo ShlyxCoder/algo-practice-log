@@ -1,4 +1,4 @@
-package cn.org.shelly.leetcode.design;
+package cn.org.shelly.leetcode.design.juc;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;

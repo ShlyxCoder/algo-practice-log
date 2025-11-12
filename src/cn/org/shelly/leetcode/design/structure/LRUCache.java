@@ -1,4 +1,4 @@
-package cn.org.shelly.leetcode.design;
+package cn.org.shelly.leetcode.design.structure;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

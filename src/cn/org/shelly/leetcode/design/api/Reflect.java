@@ -1,4 +1,4 @@
-package cn.org.shelly.leetcode.design;
+package cn.org.shelly.leetcode.design.api;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

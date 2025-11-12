@@ -1,4 +1,4 @@
-package cn.org.shelly.leetcode.design;
+package cn.org.shelly.leetcode.design.io;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.nio.channels.FileChannel;
 public class ByteBufferTest {
     public static void main(String[] args) throws IOException {
         try {
-            FileChannel channel = new FileInputStream("src/cn/org/shelly/leetcode/design/hello.txt").getChannel();
+            FileChannel channel = new FileInputStream("src/cn/org/shelly/leetcode/design/io/hello.txt").getChannel();
             ByteBuffer buffer = ByteBuffer.allocate(10);
             while(channel.read(buffer) != -1){
                 buffer.flip();
@@ -33,7 +33,7 @@ public class ByteBufferTest {
             System.out.println("i = " + bb.get());
         }
         System.out.println("bb = " + bb);
-        FileChannel w = new FileOutputStream("src/cn/org/shelly/leetcode/design/out.txt").getChannel();
+        FileChannel w = new FileOutputStream("src/cn/org/shelly/leetcode/design/io/out.txt").getChannel();
         ByteBuffer out = ByteBuffer.allocate(10);
         out.put("sass241511".getBytes());
         out.flip();

@@ -1,4 +1,4 @@
-package cn.org.shelly.leetcode.design;
+package cn.org.shelly.leetcode.design.structure;
 
 public class MyHashMap<K, V> {
     private Node<K, V>[] array;

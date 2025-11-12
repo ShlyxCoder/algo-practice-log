@@ -1,4 +1,4 @@
-package cn.org.shelly.leetcode.design;
+package cn.org.shelly.leetcode.design.structure;
 
 public class MyLinkedList<K, V> {
     static class Node<K, V> {

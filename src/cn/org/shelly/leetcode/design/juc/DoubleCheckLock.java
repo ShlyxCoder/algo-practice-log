@@ -1,4 +1,4 @@
-package cn.org.shelly.leetcode.design;
+package cn.org.shelly.leetcode.design.juc;
 
 public class DoubleCheckLock {
     private static volatile DoubleCheckLock instance;
