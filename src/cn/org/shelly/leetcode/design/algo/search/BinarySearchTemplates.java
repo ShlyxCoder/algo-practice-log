@@ -14,20 +14,25 @@ public class BinarySearchTemplates {
     /**
      * 模板 A：精确查找或插入位置
      * 适用题目：
-     * - 查找目标元素是否存在 (LeetCode 33, 34)
-     * - 查找插入位置 (LeetCode 35)
+     * - 查找目标元素是否存在
+     * - 查找插入位置
      * 特点：
      * - 循环条件 while(left <= right)
      * - left 和 right 初始化为有效下标 0..n-1
      * - 退出时 left 就是插入位置
      */
+    /*
+        二分查找每时每刻l，r都是继承原有区间性质，如果是[ )，
+        那么right就不能更新为-1，应该他代表开区间，-1+)表示取不到左边
+        但左边可能是正确答案
+     */
     public static int searchExactOrInsert(int[] nums, int target) {
-        int left = 0, right = nums.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2; // 安全计算 mid
+        int left = 0, right = nums.length - 1; // 如果这里是nums.length
+        while (left <= right) { // 那这里就应该是 <
+            int mid = left + (right - left) / 2;
             if (nums[mid] == target) return mid;
             else if (nums[mid] < target) left = mid + 1;
-            else right = mid - 1;
+            else right = mid - 1;  // 这里就应该是mid
         }
         return left; // 插入位置
     }
