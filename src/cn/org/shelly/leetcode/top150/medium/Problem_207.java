@@ -1,11 +1,10 @@
-package cn.org.shelly.leetcode.hot100.medium;
+package cn.org.shelly.leetcode.top150.medium;
 
-import java.util.*;
-/**
- * ✔ 课程表
- * @author shelly
- * @date 2025/7/28
- */
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
 public class Problem_207 {
     class Solution {
         public boolean canFinish(int numCourses, int[][] prerequisites) {
@@ -45,4 +44,5 @@ public class Problem_207 {
             return count == numCourses;
         }
     }
+
 }

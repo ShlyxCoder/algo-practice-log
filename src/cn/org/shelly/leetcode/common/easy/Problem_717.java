@@ -1,5 +1,8 @@
 package cn.org.shelly.leetcode.common.easy;
 
+/**
+ * 1比特与2比特字符
+ */
 public class Problem_717 {
     class Solution {
         public boolean isOneBitCharacter(int[] bits) {

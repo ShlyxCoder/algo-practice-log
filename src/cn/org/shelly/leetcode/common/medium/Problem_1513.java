@@ -1,5 +1,8 @@
 package cn.org.shelly.leetcode.common.medium;
 
+/**
+ * 仅含1的子串
+ */
 public class Problem_1513 {
     class Solution {
         public int numSub(String s) {

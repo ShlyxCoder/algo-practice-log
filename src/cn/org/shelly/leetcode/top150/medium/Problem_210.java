@@ -1,17 +1,14 @@
-package cn.org.shelly.leetcode.hot100.medium;
+package cn.org.shelly.leetcode.top150.medium;
 
 import java.util.*;
-/**
- * ✔ 课程表
- * @author shelly
- * @date 2025/7/28
- */
-public class Problem_207 {
+
+public class Problem_210 {
     class Solution {
-        public boolean canFinish(int numCourses, int[][] prerequisites) {
+        public int[] findOrder(int numCourses, int[][] prerequisites) {
             int[] indegree = new int[numCourses];
             List<Integer>[] graph = new ArrayList[numCourses];
-
+            int [] ret = new int[numCourses];
+            int idx = 0;
             // 建图 + 入度
             for (int[] p : prerequisites) {
                 int goal = p[0];
@@ -32,7 +29,7 @@ public class Problem_207 {
             while (!queue.isEmpty()) {
                 int cur = queue.poll();
                 count++;
-
+                ret[idx++] = cur;
                 List<Integer> list = graph[cur];
                 if (list == null) continue;
 
@@ -41,8 +38,10 @@ public class Problem_207 {
                     if (--indegree[next] == 0) queue.add(next);
                 }
             }
-
-            return count == numCourses;
+            if(count == numCourses){
+                return ret;
+            }
+            return new int[]{};
         }
     }
 }
