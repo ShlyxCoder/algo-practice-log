@@ -1,14 +1,6 @@
 package cn.org.shelly;
 class Solution {
 
-    public boolean searchMatrix(int[][] matrix, int target) {
-        int i = 0, j = matrix.length-1;
-        while(i<=j){
-            int mid = (i + j) >> 1;
-            if(matrix[mid][0] )
-        }
-    }
-
     public int[] searchRange(int[] nums, int target) {
         int left = lowerBound(nums, target);
         int right = upperBound(nums,target);
@@ -25,7 +17,7 @@ class Solution {
                 i = mid + 1;
             }
         }
-        return i;  // i 即为第一个 >= target 的位置
+        return i;
     }
 
     public int upperBound(int[] nums, int target) {
@@ -38,6 +30,6 @@ class Solution {
                 i = mid + 1;
             }
         }
-        return i;  // i 即为第一个 > target 的位置
+        return i;
     }
 }
