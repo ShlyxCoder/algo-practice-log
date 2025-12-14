@@ -44,7 +44,8 @@ class MyTask extends RecursiveTask<Long>{
             return rightAns + fork.join();
         }
     }
-}class MergeSortTask extends RecursiveTask<int[]> {
+}
+class MergeSortTask extends RecursiveTask<int[]> {
     private final int[] arr;
 
     public MergeSortTask(int[] arr) {
