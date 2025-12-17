@@ -14,8 +14,8 @@ public class PrintByOrderTask {
        new Thread(
                () -> {
                    for(int i = 0;i<n;i++){
-                       r.lock();
                        try {
+                           r.lock();
                            while (tmp != 'A') {
                                a.await();
                            }
@@ -34,8 +34,8 @@ public class PrintByOrderTask {
         new Thread(
                 () ->{
                     for(int i = 0;i<n;i++){
-                        r.lock();
                         try {
+                            r.lock();
                             while (tmp != 'B') {
                                 b.await();
                             }
