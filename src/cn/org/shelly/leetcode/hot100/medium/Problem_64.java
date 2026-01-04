@@ -23,5 +23,40 @@ public class Problem_64 {
             }
             return dp[m-1][n-1];
         }
+        private void printOps(String w1, String w2, int[][] dp) {
+            int i = w1.length();
+            int j = w2.length();
+
+            while (i > 0 || j > 0) {
+
+                // ↖ 左上：匹配 或 替换
+                if (i > 0 && j > 0) {
+                    if (w1.charAt(i - 1) == w2.charAt(j - 1)) {
+                        System.out.println("Match");
+                        i--;
+                        j--;
+                        continue;
+                    }
+                    if (dp[i][j] == dp[i - 1][j - 1] + 1) {
+                        System.out.println("Replace");
+                        i--;
+                        j--;
+                        continue;
+                    }
+                }
+
+                // ↑ 上：删除
+                if (i > 0 && dp[i][j] == dp[i - 1][j] + 1) {
+                    System.out.println("Delete");
+                    i--;
+                    continue;
+                }
+
+                // ← 左：插入
+                System.out.println("Insert");
+                j--;
+            }
+        }
+
     }
 }

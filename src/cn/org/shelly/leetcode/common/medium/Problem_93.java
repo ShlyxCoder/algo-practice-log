@@ -7,34 +7,41 @@ import java.util.List;
  * @author shelly
  * @date 2025/9/11
  */
-public class Problem_93 {
-    class Solution {
-        List<String> ret = new ArrayList<>();
-        public List<String> restoreIpAddresses(String s) {
-            if(s.length()<4) return ret;
-            List<String> list = new ArrayList<>();
-            dfs(s, 0, list);
-            return ret;
+class Solution {
+    List<String> list = new ArrayList<>();
+
+    public List<String> restoreIpAddresses(String s) {
+        if(s.length() < 4 || s.length() > 12) return list;
+        dfs(s, 0, new ArrayList<>());
+        return list;
+    }
+
+    void dfs(String s, int begin, List<String> cur){
+        // 已经分了4段
+        if(cur.size() == 4){
+            if(begin == s.length()){
+                list.add(String.join(".", cur));
+            }
+            return;
         }
-        private void dfs(String s, int start, List<String> res) {
-            if(res.size() == 4 && start == s.length()){
-                StringBuilder sb = new StringBuilder();
-                for(int i = 0; i< 4;i++){
-                    sb.append(res.get(i));
-                    if(i!=3) sb.append('.');
-                }
-                ret.add(sb.toString());
-                return;
+        // 尝试1-3位数字
+        for(int len = 1; len <= 3 && begin + len <= s.length(); len++){
+            String segment = s.substring(begin, begin + len);
+
+            // 检查前导零
+            if(segment.length() > 1 && segment.charAt(0) == '0'){
+                break;
             }
-            for(int i = 0;i<3;i++){
-                if (start + i >= s.length()) break;
-                String tmp = s.substring(start, start + 1 + i);
-                int num = Integer.parseInt(tmp);
-                if ((tmp.length() > 1 && tmp.startsWith("0")) || num > 255) continue;
-                res.add(tmp);
-                dfs(s, start+i+1, res);
-                res.remove(res.size()-1);
+
+            // 检查范围
+            int num = Integer.parseInt(segment);
+            if(num > 255){
+                break;
             }
+
+            cur.add(segment);
+            dfs(s, begin + len, cur);
+            cur.remove(cur.size() - 1);
         }
     }
 }
